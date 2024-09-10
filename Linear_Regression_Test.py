@@ -39,26 +39,25 @@ df = df.sort_values(by='Occurrences', ascending=True, ignore_index=True)
 
 
 # Plot the sorted occurrences
-sorted_occurrences = df['Occurrences']
-plt.scatter(df.index, sorted_occurrences)
-plt.xlabel("KINO Database Index (sorted by occurrences)")
-plt.ylabel("Number of Occurrences")
-plt.title("Occurrences of KINO Numbers in Asc Order")
+plt.scatter(df.index, df['Occurrences'])
+plt.xlabel('Index')
+plt.ylabel('Occurrences')
+plt.title('Occurrences of KINO Numbers in Ascending Order')
 
 
 # Fit a linear regression line
-slope, intercept, r_value, p_value, std_err = stats.linregress(df.index, sorted_occurrences)
+slope, intercept, r_value, p_value, std_err = stats.linregress(df.index, df['Occurrences'])
 
 
 # Print results of the slope hypothesis test
-print(f"Slope (gradient): {slope}")
-print(f"p-value: {p_value}")
+print(f'Slope (gradient): {slope}')
+print(f'p-value: {p_value}')
 if p_value < 0.05:
-    print("The slope is significantly different from zero, indicating a possible bias.")
+    print('The slope is significantly different from zero, indicating a possible bias.')
 else:
-    print("The slope is not significantly different from zero, indicating no significant bias.")
+    print('The slope is not significantly different from zero, indicating no significant bias.')
 
 # Plot the regression line
-plt.plot(df.index, intercept + slope * df.index, 'r', label=f"Fit: y = {slope:.2f}x + {intercept:.2f}")
+plt.plot(df.index, intercept + slope * df.index, 'r', label=f'Fit: y = {slope:.2f}x + {intercept:.2f}')
 plt.legend()
 plt.show()

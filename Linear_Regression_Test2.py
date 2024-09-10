@@ -28,9 +28,9 @@ df_plot = df_plot.sort_values(by='Occurrences', ascending=True).reset_index(drop
 
 # Plot the sorted occurrences
 plt.scatter(df_plot.index, df_plot['Occurrences'])
-plt.xlabel("Index (sorted by occurrences)")
-plt.ylabel("Number of Occurrences")
-plt.title("Occurrences of KINO Numbers in Ascending Order")
+plt.xlabel('Index')
+plt.ylabel('Occurrences')
+plt.title('Occurrences of KINO Numbers in Ascending Order')
 
 # Fit a linear regression line
 slope, intercept, r_value, p_value, std_err = stats.linregress(df_plot.index, df_plot['Occurrences'])
